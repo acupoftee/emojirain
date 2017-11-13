@@ -1,9 +1,11 @@
 <html>
     <head>
       <title>Emoji Rain</title>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.14/p5.js"></script>
-      <script src="sketch.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.14/p5.js"></script>>
     </head>
     <body>
+        <script>
+            function setup(){createCanvas(window.innerWidth,window.innerHeight),background(0);for(var i=0,e=0;e<=width/emojiSize;e++){var t=new Stream;t.generateEmojis(i,round(random(0,height))),streams.push(t),i+=emojiSize}textSize(emojiSize)}function draw(){background(0),streams.forEach(function(i){i.render()})}function Emoji(i,e,t){this.x=i,this.y=e,this.speed=t,this.value,this.switchInterval=round(random(5,20)),this.getRandomEmoji=function(){frameCount%this.switchInterval==0&&(this.value=String.fromCodePoint("0x1F"+floor(random(1536,1616)).toString(16)))},this.rain=function(){this.y=this.y>=height?0:this.y+=this.speed}}function Stream(){this.emojis=[],this.totalEmojis=round(random(2,15)),this.speed=random(4,15),this.generateEmojis=function(i,e){for(var t=0;t<=this.totalEmojis;t++)(emoji=new Emoji(i,e,this.speed)).getRandomEmoji(),this.emojis.push(emoji),e-=emojiSize},this.render=function(){this.emojis.forEach(function(i,e,t){fill(0),text(i.value,i.x,i.y),fill(0,0,0,e*floor(255/t.length-1)),rect(i.x,i.y-emojiSize,emojiSize,emojiSize),i.rain(),i.getRandomEmoji()})}}var emoji,emojiSize=40,streams=[];
+        </script>
     </body>
   </html>
